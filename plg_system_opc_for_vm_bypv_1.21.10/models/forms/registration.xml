@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form>
+	<fieldset>
+		<field name="email" type="email"
+			filter="string"
+			message="COM_USERS_REGISTER_EMAIL1_MESSAGE"
+			unique="true"
+			validate="email"
+		/>
+
+		<field name="username" type="text"
+			filter="username"
+			message="COM_USERS_REGISTER_USERNAME_MESSAGE"
+			validate="username"
+		/>
+	</fieldset>
+</form>

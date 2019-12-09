@@ -1,0 +1,114 @@
+/**
+ * Plugin: One Page Checkout for VirtueMart byPV
+ * Copyright (C) 2014 byPV.org <info@bypv.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*** COMMON ***/
+
+#bypv_cart div#bypv_cart_advertisements,
+#bypv_cart div#bypv_cart_customer_type_select,
+#bypv_cart div#cart_customer,
+#bypv_cart div#bypv_cart_fields,
+#bypv_cart div#cart_comment,
+#bypv_cart div#bypv_cart_order_summary
+{
+	clear: both;
+}
+
+/*** Shipments and Payments ***/
+
+#bypv_cart div#bypv_cart_shipments {
+	float: left;
+}
+
+#bypv_cart div#bypv_cart_payments {
+	float: right;
+}
+
+#bypv_cart div.method_block {
+	width: 49%;
+}
+
+/*** Customer Type Select ***/
+
+#bypv_cart div#bypv_cart_customer_type_select > .cart_block_title {
+	text-align: center;
+}
+
+#bypv_cart div#bypv_cart_customer_type_select ul {
+	text-align: center;
+	padding: 0;
+}
+
+#bypv_cart div#bypv_cart_customer_type_select ul li {
+	display: inline-block;
+	white-space: nowrap;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+}
+
+/*** Login / Logout ***/
+
+#bypv_cart div#bypv_cart_login {
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#bypv_cart div#bypv_cart_login > .cart_block_title,
+#bypv_cart div#bypv_cart_login.logout
+{
+	text-align: center;
+}
+
+/*** Address ***/
+
+#bypv_cart div#bypv_cart_billing_address {
+	float: left;
+}
+
+#bypv_cart div#bypv_cart_shipping_address {
+	float: right;
+}
+
+#bypv_cart div.address_block {
+	width: 49%;
+}
+
+/*** Shipping Address Select ***/
+
+#bypv_cart div#bypv_cart_shipping_address_select > .cart_block_title {
+	display: none;
+}
+
+/*** Customer Comment ****/
+
+#bypv_cart div#cart_comment textarea {
+	width: 80%;
+	min-height: 8em;
+}
+
+/*** TOS ****/
+
+#bypv_cart div#cart_tos {
+	text-align: center;
+}
+
+/*** Buttons ****/
+
+#bypv_cart div#cart_buttons {
+	text-align: right;
+}

@@ -1,0 +1,61 @@
+/**
+ * Plugin: One Page Checkout for VirtueMart byPV
+ * Copyright (C) 2014 byPV.org <info@bypv.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*** Fixed checkboxes in templates based on T3 Framework  ***/
+/*
+.jq-checkbox
+{
+	border:2px solid #E2E6E7;
+	float:left;
+	background:#f5f7f8;
+	border-radius:2px;
+	display:inline-block;
+	padding:0;
+	width:18px;
+	height:18px;
+	cursor:pointer;
+	margin-right:5px;
+	position:relative;
+	top:2px;
+	box-shadow:none;
+}
+
+.jq-checkbox.disabled
+{
+	cursor:default;
+	border-color:#eceeef;
+	background:#fcfdfe;
+}
+
+.jq-checkbox.checked span,
+.jq-checkbox:hover span
+{
+	display:block;
+	width:11px;
+	height:11px;
+	background:url('/templates/t3_bs3_blank/images/check_box.png') left top no-repeat;
+	position:relative;
+	left:1px;
+	top:1px;
+}
+
+.jq-checkbox.disabled span
+{
+	display:none;
+}
+*/

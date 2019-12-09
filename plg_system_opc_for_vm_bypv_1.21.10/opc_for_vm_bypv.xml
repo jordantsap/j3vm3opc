@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="2.5" type="plugin" group="system" method="upgrade">
+
+	<name>plg_system_opc_for_vm_bypv</name>
+	<creationDate>June 2019</creationDate>
+	<author>byPV.org</author>
+	<authorEmail>info@bypv.org</authorEmail>
+	<authorUrl>https://www.bypv.org</authorUrl>
+	<copyright>Copyright (C) 2019 byPV.org</copyright>
+	<license>GNU/GPLv3 http://www.gnu.org/licenses/gpl-3.0.html</license>
+	<version>1.21.10</version>
+	<description>PLG_SYSTEM_OPC_FOR_VM_BYPV_XML_DESCRIPTION</description>
+
+	<files>
+		<folder>controllers</folder>
+		<folder>helpers</folder>
+		<folder>language</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+ 		<filename plugin="opc_for_vm_bypv">opc_for_vm_bypv.php</filename>
+		<filename>index.html</filename>
+	</files>
+
+	<media folder="media" destination="plg_system_opc_for_vm_bypv">
+		<folder>css</folder>
+		<folder>images</folder>
+		<folder>js</folder>
+	</media>
+
+	<config>
+		<fields name="params">
+
+			<fieldset name="checkout" addfieldpath="/plugins/system/opc_for_vm_bypv/models/fields">
+				<field name="allow_empty_cart" type="radio" default="0"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_EMPTY_CART_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_EMPTY_CART_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="allow_confirmation_page" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_CONFIRMATION_PAGE_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_CONFIRMATION_PAGE_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field type="spacer" label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_FORMS_IN_CHECKOUT_LABEL" />
+
+				<field name="show_order_summary_in" type="radio" default="product_list"
+					class="btn-group" 
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_ORDER_SUMMARY_IN_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_ORDER_SUMMARY_IN_DESCRIPTION"
+				>
+					<option value="product_list">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRODUCT_LIST</option>
+					<option value="page">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PAGE</option>
+				</field>
+
+				<field name="show_coupon_code_in" type="radio" default="product_list"
+					class="btn-group" 
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_COUPON_CODE_IN_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_COUPON_CODE_IN_DESCRIPTION"
+				>
+					<option value="product_list">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRODUCT_LIST</option>
+					<option value="page">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PAGE</option>
+					<option value="product_list_and_page">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRODUCT_LIST_AND_PAGE</option>
+				</field>
+
+				<field name="show_shipments" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_SHIPMENTS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_SHIPMENTS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="show_payments" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_PAYMENTS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_PAYMENTS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="show_shipping_address" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_SHIPPING_ADDRESS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_SHIPPING_ADDRESS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="show_advertisements" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_ADVERTISEMENTS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_ADVERTISEMENTS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="show_comment" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_COMMENT_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_COMMENT_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field type="spacer" label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHIPPING_ADDRESS_LABEL" />
+
+				<field name="allow_delete_shipping_address" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_DELETE_SHIPPING_ADDRESS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_DELETE_SHIPPING_ADDRESS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="hide_shipping_address_for_selected_shipments" type="vmmethods" methodtype="shipment" multiple="true"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_HIDE_SHIPPING_ADDRESS_FOR_SELECTED_SHIPMENTS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_HIDE_SHIPPING_ADDRESS_FOR_SELECTED_SHIPMENTS_DESCRIPTION"
+				/>
+			</fieldset>
+
+			<fieldset name="product_list">
+				<field type="spacer"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_SECTION_PRODUCT_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_SECTION_DESCRIPTION"
+				/>
+
+				<field name="product_list_col_1" type="list" default="SKU"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_PRODUCT_LIST_COL_1_LABEL"
+					description=""
+				>
+					<option value="none">JNONE</option>
+					<option value="SKU">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_SKU</option>
+					<option value="NAME">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_NAME</option>
+					<option value="NAME_WITHOUT_LINK">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_NAME_WITHOUT_LINK</option>
+					<option value="PRICE_EXCL_TAX::ORIGINAL">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_EXCL_TAX_ORIGINAL</option>
+					<option value="PRICE_EXCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_EXCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="PRICE_INCL_TAX::ORIGINAL">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_INCL_TAX_ORIGINAL</option>
+					<option value="PRICE_INCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_INCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="QUANTITY::READ_ONLY">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_RO</option>
+					<option value="QUANTITY::EDIT">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_EDIT</option>
+					<option value="QUANTITY::EDIT_DROP">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_EDIT_AND_DROP</option>
+				</field>
+
+				<field name="product_list_col_2" type="list" default="NAME"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_PRODUCT_LIST_COL_2_LABEL"
+					description=""
+				>
+					<option value="none">JNONE</option>
+					<option value="SKU">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_SKU</option>
+					<option value="NAME">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_NAME</option>
+					<option value="NAME_WITHOUT_LINK">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_NAME_WITHOUT_LINK</option>
+					<option value="PRICE_EXCL_TAX::ORIGINAL">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_EXCL_TAX_ORIGINAL</option>
+					<option value="PRICE_EXCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_EXCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="PRICE_INCL_TAX::ORIGINAL">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_INCL_TAX_ORIGINAL</option>
+					<option value="PRICE_INCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_INCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="QUANTITY::READ_ONLY">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_RO</option>
+					<option value="QUANTITY::EDIT">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_EDIT</option>
+					<option value="QUANTITY::EDIT_DROP">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_EDIT_AND_DROP</option>
+				</field>
+
+				<field name="product_list_col_3" type="list" default="PRICE_EXCL_TAX::ORIGINAL"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_PRODUCT_LIST_COL_3_LABEL"
+					description=""
+				>
+					<option value="none">JNONE</option>
+					<option value="SKU">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_SKU</option>
+					<option value="NAME">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_NAME</option>
+					<option value="NAME_WITHOUT_LINK">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_NAME_WITHOUT_LINK</option>
+					<option value="PRICE_EXCL_TAX::ORIGINAL">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_EXCL_TAX_ORIGINAL</option>
+					<option value="PRICE_EXCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_EXCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="PRICE_INCL_TAX::ORIGINAL">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_INCL_TAX_ORIGINAL</option>
+					<option value="PRICE_INCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_INCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="QUANTITY::READ_ONLY">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_RO</option>
+					<option value="QUANTITY::EDIT">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_EDIT</option>
+					<option value="QUANTITY::EDIT_DROP">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_EDIT_AND_DROP</option>
+				</field>
+
+				<field name="product_list_col_4" type="list" default="QUANTITY::EDIT"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_PRODUCT_LIST_COL_4_LABEL"
+					description=""
+				>
+					<option value="none">JNONE</option>
+					<option value="SKU">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_SKU</option>
+					<option value="NAME">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_NAME</option>
+					<option value="NAME_WITHOUT_LINK">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_NAME_WITHOUT_LINK</option>
+					<option value="PRICE_EXCL_TAX::ORIGINAL">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_EXCL_TAX_ORIGINAL</option>
+					<option value="PRICE_EXCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_EXCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="PRICE_INCL_TAX::ORIGINAL">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_INCL_TAX_ORIGINAL</option>
+					<option value="PRICE_INCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_PRICE_INCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="QUANTITY::READ_ONLY">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_RO</option>
+					<option value="QUANTITY::EDIT">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_EDIT</option>
+					<option value="QUANTITY::EDIT_DROP">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_QUANTITY_EDIT_AND_DROP</option>
+				</field>
+
+				<field type="spacer"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_SECTION_PRICES_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_SECTION_DESCRIPTION"
+				/>
+
+				<field name="product_list_col_5" type="list" default="DISCOUNT"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_PRODUCT_LIST_COL_5_LABEL"
+					description=""
+				>
+					<option value="none">JNONE</option>
+					<option value="DISCOUNT">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_DISCOUNT</option>
+					<option value="TOTAL_EXCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_EXCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TOTAL_EXCL_TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_EXCL_TAX_DISCOUNTED</option>
+					<option value="TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TAX_DISCOUNTED</option>
+					<option value="TOTAL_INCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_INCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TOTAL_INCL_TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_INCL_TAX_DISCOUNTED</option>
+				</field>
+
+				<field name="product_list_col_6" type="list" default="TOTAL_EXCL_TAX::DISCOUNTED"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_PRODUCT_LIST_COL_6_LABEL"
+					description=""
+				>
+					<option value="none">JNONE</option>
+					<option value="DISCOUNT">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_DISCOUNT</option>
+					<option value="TOTAL_EXCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_EXCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TOTAL_EXCL_TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_EXCL_TAX_DISCOUNTED</option>
+					<option value="TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TAX_DISCOUNTED</option>
+					<option value="TOTAL_INCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_INCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TOTAL_INCL_TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_INCL_TAX_DISCOUNTED</option>
+				</field>
+
+				<field name="product_list_col_7" type="list" default="TAX::DISCOUNTED"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_PRODUCT_LIST_COL_7_LABEL"
+					description=""
+				>
+					<option value="none">JNONE</option>
+					<option value="DISCOUNT">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_DISCOUNT</option>
+					<option value="TOTAL_EXCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_EXCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TOTAL_EXCL_TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_EXCL_TAX_DISCOUNTED</option>
+					<option value="TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TAX_DISCOUNTED</option>
+					<option value="TOTAL_INCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_INCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TOTAL_INCL_TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_INCL_TAX_DISCOUNTED</option>
+				</field>
+
+				<field name="product_list_col_8" type="list" default="TOTAL_INCL_TAX::DISCOUNTED"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_PRODUCT_LIST_COL_8_LABEL"
+					description=""
+				>
+					<option value="none">JNONE</option>
+					<option value="DISCOUNT">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_DISCOUNT</option>
+					<option value="TOTAL_EXCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_EXCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TOTAL_EXCL_TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_EXCL_TAX_DISCOUNTED</option>
+					<option value="TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TAX_DISCOUNTED</option>
+					<option value="TOTAL_INCL_TAX::ORIGINAL_AND_DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_INCL_TAX_ORIGINAL_AND_DISCOUNTED</option>
+					<option value="TOTAL_INCL_TAX::DISCOUNTED">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TOTAL_INCL_TAX_DISCOUNTED</option>
+				</field>
+
+				<field type="spacer"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_SECTION_ACTIONS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_SECTION_DESCRIPTION"
+				/>
+
+				<field name="product_list_col_9" type="list" default="DROP"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_PRODUCT_LIST_COL_9_LABEL"
+					description=""
+				>
+					<option value="none">JNONE</option>
+					<option value="DROP">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_DROP_BUTTON</option>
+				</field>
+
+				<field type="spacer" label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_CONTROL_OPTIONS_LABEL" />
+
+				<field name="update_product_quantity_promptly" type="radio" default="0"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_UPDATE_PRODUCT_QUANTITY_PROMPTLY_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_UPDATE_PRODUCT_QUANTITY_PROMPTLY_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field type="spacer" label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PRODUCT_LIST_OTHERS_LABEL" />
+
+				<field name="show_selected_shipment" type="radio" default="1"
+					class="btn-group"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_SELECTED_SHIPMENT_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_SELECTED_SHIPMENT_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="ONLY_WITH_FEE">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_ONLY_WITH_FEE</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="show_selected_payment" type="radio" default="1"
+					class="btn-group"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_SELECTED_PAYMENT_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_SELECTED_PAYMENT_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="ONLY_WITH_FEE">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_ONLY_WITH_FEE</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="show_zero_amounts" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_ZERO_AMOUNTS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_ZERO_AMOUNTS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="customer_type">
+				<field name="show_customer_types_always" type="radio" default="0"
+					class="btn-group"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_CUSTOMER_TYPES_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOW_CUSTOMER_TYPES_DESCRIPTION"
+				>
+					<option value="0">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_ONLY_WHEN_NEEDED</option>
+					<option value="1">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_ALWAYS</option>
+				</field>
+
+				<field name="default_customer_type" type="radio" default="login"
+					class="btn-group"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_DEFAULT_CUSTOMER_TYPE_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_DEFAULT_CUSTOMER_TYPE_DESCRIPTION"
+				>
+					<option value="login">PLG_SYSTEM_OPC_FOR_VM_BYPV_LOGIN_LABEL</option>
+					<option value="registration">PLG_SYSTEM_OPC_FOR_VM_BYPV_REGISTRATION_LABEL</option>
+					<option value="guest">PLG_SYSTEM_OPC_FOR_VM_BYPV_GUEST_LABEL</option>
+				</field>
+
+				<field type="spacer" label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_CUSTOMER_TYPES_LABEL" />
+
+				<field name="allow_login_when_ordering" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_LOGIN_WHEN_ORDERING_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_LOGIN_WHEN_ORDERING_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="allow_registration_when_ordering" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_REGISTRATION_WHEN_ORDERING_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_REGISTRATION_WHEN_ORDERING_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="allow_order_from_guest" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_ORDER_FROM_GUEST_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_ORDER_FROM_GUEST_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="shopper_fields" addfieldpath="/plugins/system/opc_for_vm_bypv/models/fields">
+				<field name="remember_form_fields" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_REMEMBER_FORM_FIELDS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_REMEMBER_FORM_FIELDS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="tracking_of_changes" type="vmshopperfields" multiple="true" default="zip|virtuemart_country_id"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_TRACKING_OF_CHANGES_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_TRACKING_OF_CHANGES_DESCRIPTION"
+				/>
+
+				<field name="validate_fields_of_joomla_immediately" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALIDATE_FIELDS_OF_JOOMLA_IMMEDIATELY_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALIDATE_FIELDS_OF_JOOMLA_IMMEDIATELY_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="allow_validation_in_browser" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_VALIDATION_IN_BROWSER_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_VALIDATION_IN_BROWSER_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="allow_autocompleting_forms" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_AUTOCOMPLETING_FORMS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_AUTOCOMPLETING_FORMS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field type="spacer"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_HIDING_FIELDS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_HIDING_FIELDS_DESCRIPTION"
+				/>
+
+				<field name="hide_shopper_fields" type="vmshopperfields" multiple="true" default=""
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_HIDE_SHOPPER_FIELDS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_HIDE_SHOPPER_FIELDS_DESCRIPTION"
+				/>
+
+				<field name="autofill_hidden_shopper_fields" type="textarea"
+					default='username = "{first_name}{last_name}" (LC, AN, RS)&#13;&#10;name = "{first_name} {middle_name} {last_name}"'
+					cols="40" rows="5" class="input-xxlarge"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_AUTOFILL_HIDDEN_SHOPPER_FIELDS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_AUTOFILL_HIDDEN_SHOPPER_FIELDS_DESCRIPTION"
+				/>
+
+				<field name="shopper_fields_display_conditions" type="textarea" default="" cols="40" rows="5" class="input-xxlarge"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOPPER_FIELDS_DISPLAY_CONDITIONS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHOPPER_FIELDS_DISPLAY_CONDITIONS_DESCRIPTION"
+				/>
+			</fieldset>
+
+			<fieldset name="cart_layout_theme">
+				<field name="plugin_layout" type="list" default="vertical"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PLUGIN_LAYOUT_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PLUGIN_LAYOUT_DESCRIPTION"
+				>
+					<option value="vertical" description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PLUGIN_LAYOUT_DESCRIPTION">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_VERTICAL1</option>
+					<option value="vertical::one_column">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_VERTICAL1_ONE_COLUMN</option>
+					<option value="vertical2">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_VERTICAL2</option>
+					<option value="vertical2::one_column">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_VERTICAL2_ONE_COLUMN</option>
+					<option value="horizontal::panel_left">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_HORIZONTAL_PANEL_ON_THE_LEFT</option>
+					<option value="horizontal::panel_right">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_HORIZONTAL_PANEL_ON_THE_RIGHT</option>
+				</field>
+
+				<field name="use_plugin_layout_css" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_USE_PLUGIN_LAYOUT_CSS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_USE_PLUGIN_LAYOUT_CSS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="use_plugin_layout_responsive_css" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					showon="use_plugin_layout_css:1"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_USE_PLUGIN_LAYOUT_RESPONSIVE_CSS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_USE_PLUGIN_LAYOUT_RESPONSIVE_CSS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="use_plugin_custom_css" type="radio" default="0"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_USE_PLUGIN_CUSTOM_CSS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_USE_PLUGIN_CUSTOM_CSS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="plugin_theme_css" type="list" default="j25_beez_vm20_default"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PLUGIN_THEME_CSS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PLUGIN_THEME_CSS_DESCRIPTION"
+				>
+					<option value="none">JNONE</option>
+					<option value="j25_beez_vm20_default">Joomla 2.5 Beez + VirtueMart 2.0 Default</option>
+					<option value="mowebso_shoplicious">MoWebSo: Shoplicious</option>
+				</field>
+
+				<field name="header_level_offset" type="radio" default="0"
+					class="btn-group"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_HEADER_LEVEL_OFFSET_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_HEADER_LEVEL_OFFSET_DESCRIPTION"
+				>
+					<option value="0">0</option>
+					<option value="1">+1</option>
+					<option value="2">+2</option>
+					<option value="3">+3</option>
+				</field>
+
+				<field type="spacer"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_LOADING_OVERLAY_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_LOADING_OVERLAY_DESCRIPTION"
+				/>
+
+				<field name="loading_overlay_show_style" type="radio" default="CENTER"
+					class="btn-group"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_LOADING_OVERLAY_SHOW_STYLE_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_LOADING_OVERLAY_SHOW_STYLE_DESCRIPTION"
+				>
+					<option value="STANDARD">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_STANDARD</option>
+					<option value="TRANSPARENCY">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TRANSPARENCY</option>
+					<option value="CENTER">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_CENTER</option>
+				</field>
+
+				<field name="loading_overlay_hide_style" type="radio" default="TRANSPARENCY"
+					class="btn-group"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_LOADING_OVERLAY_HIDE_STYLE_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_LOADING_OVERLAY_HIDE_STYLE_DESCRIPTION"
+				>
+					<option value="STANDARD">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_STANDARD</option>
+					<option value="TRANSPARENCY">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_TRANSPARENCY</option>
+					<option value="CENTER">PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_VALUE_CENTER</option>
+				</field>
+
+			</fieldset>
+
+			<fieldset name="external_modules">
+				<field name="external_modules_position" type="text" size="20"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_EXTERNAL_MODULES_POSITION_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_EXTERNAL_MODULES_POSITION_DESCRIPTION"
+				/>
+
+				<field name="external_modules_chrome_style" type="text" size="20"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_EXTERNAL_MODULES_CHROME_STYLE_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_EXTERNAL_MODULES_CHROME_STYLE_DESCRIPTION"
+				/>
+
+				<field name="allow_autorefresh_for_external_modules" type="radio" default="1"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_AUTOREFRESH_FOR_EXTERNAL_MODULES_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ALLOW_AUTOREFRESH_FOR_EXTERNAL_MODULES_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="other_settings">
+				<field name="shipment_info" type="editor" filter="safehtml"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHIPMENT_INFO_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHIPMENT_INFO_DESCRIPTION"
+				/>
+
+				<field name="payment_info" type="editor" filter="safehtml"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PAYMENT_INFO_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PAYMENT_INFO_DESCRIPTION"
+				/>
+			</fieldset>
+
+			<fieldset name="patches_for_compatibility" addfieldpath="/plugins/system/opc_for_vm_bypv/models/fields">
+				<field name="shipments_incompatible_with_ajax" type="vmmethods" methodtype="shipment" multiple="true"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHIPMENTS_INCOMPATIBLE_WITH_AJAX_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SHIPMENTS_INCOMPATIBLE_WITH_AJAX_DESCRIPTION"
+				/>
+
+				<field name="payments_incompatible_with_ajax" type="vmmethods" methodtype="payment" multiple="true"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PAYMENTS_INCOMPATIBLE_WITH_AJAX_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PAYMENTS_INCOMPATIBLE_WITH_AJAX_DESCRIPTION"
+				/>
+
+				<field type="spacer" label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_PATCHES_FOR_SPECIFIC_EXTENSIONS" />
+
+				<field name="enable_patch_for_vm_privacy" type="radio" default="0"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ENABLE_PATCH_FOR_VM_PRIVACY_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ENABLE_PATCH_FOR_VM_PRIVACY_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+
+				<field name="enable_patch_for_vm_bonus" type="radio" default="0"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ENABLE_PATCH_FOR_VM_BONUS_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_ENABLE_PATCH_FOR_VM_BONUS_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+
+			<fieldset name="advanced_settings">
+				<field type="spacer" label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_SEF_URLS_LABEL" />
+
+				<field name="use_unique_url_for_every_step" type="radio" default="0"
+					class="btn-group btn-group-yesno"
+					label="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_USE_UNIQUE_URL_FOR_EVERY_STEP_LABEL"
+					description="PLG_SYSTEM_OPC_FOR_VM_BYPV_FIELD_USE_UNIQUE_URL_FOR_EVERY_STEP_DESCRIPTION"
+				>
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+			</fieldset>
+
+		</fields>
+	</config>
+
+	<scriptfile>install.script.php</scriptfile>
+
+	<updateservers><server type="extension" name="Joomla! Solutions byPV" priority="1">https://joomla.bypv.org/en/subscriptions/plg_system_opc_for_vm_bypv/update</server></updateservers>
+</extension>

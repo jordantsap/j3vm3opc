@@ -1,0 +1,541 @@
+/**
+ * Plugin: One Page Checkout for VirtueMart byPV
+ * Copyright (C) 2014 byPV.org <info@bypv.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*** RESET ***/
+
+#bypv_cart > div.cart {
+	display: block;
+	position: relative;
+	top: 0;
+	left: 0;
+	margin: 0;
+	padding: 0;
+	border: none;
+	
+	line-height: 1.3em;
+}
+
+#bypv_cart table.clean {
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+#bypv_cart table.clean h1,
+#bypv_cart table.clean h2,
+#bypv_cart table.clean h3,
+#bypv_cart table.clean h4,
+#bypv_cart table.clean h5
+{
+	line-height: 1em;
+}
+
+#bypv_cart table.clean tr th,
+#bypv_cart table.clean tr td
+{
+	display: table-cell;
+	margin: 0;
+	padding: 0;
+}
+
+#bypv_cart table.clean tr td.label
+{
+	background: none;
+	color: inherit;
+	text-shadow: none;
+	line-height: inherit;
+	font-weight: inherit;
+	white-space: normal;
+}
+
+#bypv_cart span.vmshipment_name,
+#bypv_cart span.vmpayment_name
+{
+	display: inline;
+}
+
+#bypv_cart input,
+#bypv_cart textarea,
+#bypv_cart select
+{
+	float: none;
+	display: inline-block;
+	margin: 0;
+	line-height: inherit;
+}
+
+#bypv_cart input[type=radio],
+#bypv_cart input[type=checkbox]
+{
+	width: auto;
+}
+
+#bypv_cart label
+{
+	float: none;
+	display: inline;
+	font-size: inherit;
+}
+
+#bypv_cart img
+{
+	float: none;
+	display: inline;
+}
+
+#bypv_cart span.bypv_empty_cover,
+#bypv_cart div.cart_block,
+#bypv_cart div.cart_block > fieldset.clean
+{
+	position: relative;
+}
+
+#bypv_cart fieldset.clean
+{
+	position: relative;
+	float: none;
+	width: auto;
+	min-width: 0; /* Fix width for WebKit */
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+/*** COMMON ***/
+
+#bypv_cart div#cart_tos,
+#bypv_cart div#cart_buttons
+{
+	clear: both;
+}
+
+#bypv_cart div.cart_block {
+	margin: 0 0 1em 0;
+	padding: 0;
+	border: none;
+	background: none;
+}
+
+#bypv_cart ul.clean,
+#bypv_cart ul.clean > li
+{
+	margin: 0;
+	list-style: none;
+}
+
+#bypv_cart ul.clean > li
+{
+	clear: both;
+	line-height: 1.3em;
+	padding: 0.2em 0;
+}
+
+#bypv_cart ul.clean > li > *
+{
+	vertical-align: middle;
+	margin: 0;
+}
+
+#bypv_cart input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=reset]),
+#bypv_cart textarea,
+#bypv_cart select,
+#bypv_cart div.chzn-container-single .chzn-single
+{
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+#bypv_cart div.chzn-container-single .chzn-search {
+	text-align: center;
+}
+
+#bypv_cart div.chzn-container-single
+{
+	vertical-align: bottom;
+	margin-bottom: 0;
+}
+
+#bypv_cart .chzn-container.chzn-container-multi {
+	width: auto !important;
+}
+
+#bypv_cart input[type=button],
+#bypv_cart input[type=submit]
+{
+	cursor: pointer;
+}
+
+/*** Product List ***/
+
+#bypv_cart table.summary_table {
+	width: 100%;
+}
+
+#bypv_cart table.summary_table thead th hr
+{
+	margin: 0 auto;
+	padding: 0;
+	max-width: 6em;
+}
+
+/*** Product List - COLS ***/
+
+#bypv_cart table.summary_table th,
+#bypv_cart table.summary_table td
+{
+	white-space: nowrap;
+	vertical-align: middle;
+}
+
+#bypv_cart table.summary_table td.sku,
+#bypv_cart table.summary_table td.name,
+#bypv_cart table.summary_table td.label
+{
+	white-space: normal;
+}
+
+#bypv_cart table.summary_table .sku
+{
+	width: 5%;
+}
+
+#bypv_cart table.summary_table .price_excl_tax,
+#bypv_cart table.summary_table .price_incl_tax,
+#bypv_cart table.summary_table .tax,
+#bypv_cart table.summary_table .discount,
+#bypv_cart table.summary_table .total_excl_tax,
+#bypv_cart table.summary_table .total_incl_tax
+{
+	width: 10%;
+}
+
+#bypv_cart table.summary_table .quantity,
+#bypv_cart table.summary_table .drop
+{
+	width: 1%;
+	text-align: center;
+}
+
+#bypv_cart table.summary_table td.quantity,
+#bypv_cart table.summary_table td.drop
+{
+	line-height: 1em;
+}
+
+#bypv_cart table.summary_table .name,
+#bypv_cart table.summary_table .sku,
+#bypv_cart table.summary_table .order_content,
+#bypv_cart table.summary_table tr.coupon_code .label,
+#bypv_cart table.summary_table tr.shipment .label,
+#bypv_cart table.summary_table tr.payment .label
+{
+	text-align: left;
+}
+
+#bypv_cart table.summary_table .price_excl_tax,
+#bypv_cart table.summary_table .price_incl_tax
+{
+	text-align: center;
+}
+
+#bypv_cart table.summary_table .tax,
+#bypv_cart table.summary_table .discount,
+#bypv_cart table.summary_table .total_excl_tax,
+#bypv_cart table.summary_table .total_incl_tax,
+#bypv_cart table.summary_table .label
+{
+	text-align: right;
+}
+
+
+#bypv_cart table.summary_table tfoot tr.subtotal td.label,
+#bypv_cart table.summary_table tfoot tr.total td.label,
+#bypv_cart table.summary_table tfoot tr.total_currency td.label
+{
+	text-align: right;
+}
+
+#bypv_cart table.summary_table td.name div
+{
+	display: inline-block;
+	vertical-align: middle;
+}
+
+#bypv_cart table.summary_table td.name div.vm-customfield-cart
+{
+	display: block;
+}
+
+#bypv_cart table.summary_table td.name div.image {
+	width: 30%;
+	text-align: center;
+}
+
+#bypv_cart table.summary_table td.name div.image img {
+	max-width: 100%;
+}
+
+#bypv_cart table.summary_table td.name div.text {
+	white-space: normal;
+}
+
+#bypv_cart table.summary_table td.name div.image + div.text {
+	width: 65%;
+}
+
+#bypv_cart table.summary_table td span.original
+{
+	display: block;
+}
+
+/*** Product List - Quantity Controls ***/
+
+#bypv_cart div.bypv_product_quantity {
+	white-space: nowrap;
+}
+
+#bypv_cart div.bypv_product_quantity > span.bypv_quantity_controls
+{
+	float: none;
+	display: inline-block;
+	
+	width: 15px;
+	height: auto;
+
+	margin: 0;
+	padding: 0;
+	
+	white-space: normal;
+}
+
+#bypv_cart div.bypv_product_quantity > span.bypv_quantity_controls > input[type=button] {
+	float: none;
+}
+
+#bypv_cart div.bypv_product_quantity > span.bypv_quantity_controls,
+#bypv_cart div.bypv_product_quantity > input[type=button],
+#bypv_cart div.bypv_product_quantity > input[type=text]
+{
+	vertical-align: middle;
+}
+
+#bypv_cart div.bypv_product_quantity input.bypv_quantity {
+	width: 35px;
+	height: 25px;
+	text-align: center;
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+#bypv_cart span.bypv_quantity_controls input.bypv_quantity_minus {
+	margin-top: 2px;
+}
+
+#bypv_cart span.bypv_quantity_controls input {
+	width: 16px;
+	height: 16px;
+}
+
+#bypv_cart input.bypv_product_update {
+	width: 24px;
+	height: 24px;
+}
+
+#bypv_cart input.bypv_product_remove,
+#bypv_cart input.bypv_coupon_code_remove_button,
+#bypv_cart div#bypv_cart_shipping_address_select input.bypv_remove_address_button
+{
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+}
+
+/*** Product List - Coupon Code ***/
+
+#bypv_cart input.bypv_coupon_code_remove_button
+{
+	vertical-align: baseline;
+}
+
+#bypv_cart table.summary_table tr.coupon_code td.label > span.input {
+	white-space: nowrap;
+	vertical-align: text-bottom;
+}
+
+#bypv_cart table.summary_table input[name=bypv_coupon_code] {
+	max-width: 50%;
+}
+
+/*** Shipments / Payments ***/
+
+#bypv_cart span.vmCartPaymentLogo img
+{
+	max-width: 90%;
+	max-height: 2em;
+	vertical-align: middle;
+}
+
+#bypv_cart table.summary_table span.vmCartPaymentLogo img
+{
+	max-width: 70%;
+}
+
+#bypv_cart span.vmCartShipmentLogo + span.vmshipment_name,
+/* Bug in the VirtueMart (class vmCartPaymentLogo for shipment) */
+#bypv_cart span.vmCartPaymentLogo + span.vmshipment_name,
+#bypv_cart span.vmCartPaymentLogo + span.vmpayment_name
+{
+	display: block;
+	margin-top: 0.5em;
+	margin-left: 1.5em;
+}
+
+#bypv_cart span.vmshipment_description,
+#bypv_cart span.vmpayment_description,
+#bypv_cart span.vmshipment_cost,
+#bypv_cart span.vmpayment_cost
+{
+	display: block;
+	margin-left: 3em;
+	font-size: 0.8em;
+}
+
+/*** Login, Address and Cart Fields Table***/
+
+#bypv_cart div#bypv_cart_login.login table,
+#bypv_cart div.address_block table,
+#bypv_cart div#bypv_cart_fields table
+{
+	margin: 0 auto;
+	width: 95%;
+}
+
+#bypv_cart div#bypv_cart_login.login table td.label,
+#bypv_cart div.address_block table td.label
+{
+	width: 40%;
+}
+
+#bypv_cart div#bypv_cart_fields table td.label
+{
+	width: 20%;
+}
+
+#bypv_cart div#bypv_cart_login.login table td.label label,
+#bypv_cart div.address_block table td.label label,
+#bypv_cart div#bypv_cart_fields table td.label label
+{
+	width: auto;
+}
+
+#bypv_cart div#bypv_cart_login.login table input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=reset])
+#bypv_cart div#bypv_cart_login.login table select,
+#bypv_cart div.address_block table input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=reset]),
+#bypv_cart div.address_block table textarea,
+#bypv_cart div.address_block table select,
+#bypv_cart div#bypv_cart_fields table input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=reset]),
+#bypv_cart div#bypv_cart_fields table textarea,
+#bypv_cart div#bypv_cart_fields table select
+{
+	width: 100%;
+}
+
+/*** Login / Logout ***/
+
+#bypv_cart div#bypv_cart_login.login table td > * {
+	vertical-align: middle;
+}
+
+#bypv_cart div#bypv_cart_login.login table td ul {
+	padding: 0;
+	white-space: nowrap;
+}
+ 
+/*** Customer Comment ****/
+
+#bypv_cart div#cart_comment {
+	text-align: center;
+}
+
+/*** TOS ****/
+
+#bypv_cart div#cart_tos input[type=checkbox] {
+	margin-right: 1em;
+}
+
+#bypv_cart div#cart_tos input[type=checkbox],
+#bypv_cart div#cart_tos label
+{
+	vertical-align: middle;
+}
+
+#bypv_cart div#cart_tos label,
+#bypv_cart div#cart_tos div#full-tos {
+	white-space: normal;
+}
+
+#bypv_cart div#cart_tos div#full-tos {
+	display: none;
+}
+
+/*** Buttons ****/
+
+#bypv_cart div#cart_buttons {
+	white-space: nowrap;
+}
+
+#bypv_cart div#cart_buttons input[name=bypv_submit_back_to_checkout] {
+	margin-right: 1em;
+}
+
+/*** Cart Toolbar ****/
+
+#bypv_cart div.cart_toolbar
+{
+	float: right;
+}
+
+/*** CONFIRM PAGE ****/
+
+#bypv_cart.confirm div#bypv_cart_billing_address {
+	float: left;
+}
+
+#bypv_cart.confirm div#bypv_cart_shipping_address {
+	float: right;
+}
+
+#bypv_cart.confirm div.address_block {
+	width: 49%;
+}
+
+#bypv_cart.confirm div#cart_comment {
+	clear: both;
+	float: none;
+	width: 60%;
+	margin: 0 auto 1em auto;
+	text-align: justify;
+}
+/*** Hide Responsive Elements ***/
+
+#bypv_cart .responsive,
+#bypv_cart input.responsive
+{
+	display: none;
+}

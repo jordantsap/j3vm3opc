@@ -1,0 +1,253 @@
+/**
+ * Plugin: One Page Checkout for VirtueMart byPV
+ * Copyright (C) 2014 byPV.org <info@bypv.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*** COMMON ***/
+
+#bypv_cart div.cart_block > fieldset {
+	padding: 0.5em;
+}
+
+#bypv_cart input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=reset]),
+#bypv_cart select,
+#bypv_cart div.chzn-container-single .chzn-single
+{
+	margin: 0;
+	padding: 4px;
+	height: 26px;
+	line-height: 16px;
+	background: #e8e8e8 url('../../../components/com_virtuemart/assets/images/vmgeneral/backgrounds.png') top left repeat-x;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: #777;
+}
+
+#bypv_cart div.chzn-container-active .chzn-single-with-drop {
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	background: #fff;
+}
+
+#bypv_cart div.chzn-container-single .chzn-drop {
+	border: 1px solid #ccc;
+	border-top-width: 0;
+}
+
+#bypv_cart input:not([type=checkbox]):not([type=radio]):not([type=button]):not([type=submit]):not([type=reset]):hover
+{
+	background-position: 0 -40px;
+	color: #000;
+	text-decoration: none;
+}
+
+#bypv_cart input.text_button {
+	padding: 4px 12px;
+	height: 26px;
+
+	background: #e8e8e8 url('../../../components/com_virtuemart/assets/images/vmgeneral/backgrounds.png') repeat-x;
+	background-position: 0 -160px;
+	border: 1px solid #00a000;
+	border-radius: 4px;
+	color: #fff;
+
+	letter-spacing: 1px;
+}
+
+#bypv_cart div.checkout_button {
+	font-weight: bold;
+}
+
+#bypv_cart input.text_button:hover {
+	background-position: 0 -200px;
+	color: #f2f2f2;
+}
+
+#bypv_cart div.cart_toolbar input.text_button
+{
+	font-size: 11px;
+	padding: 2px 12px;
+	height: 22px;
+}
+
+#bypv_cart input.image_button {
+	margin: 0;
+	padding: 0;
+	border: none;
+	letter-spacing: normal;
+}
+
+#bypv_cart div.address_block > .cart_block_title,
+#bypv_cart table.summary_table tr.product input.bypv_product_update,
+#bypv_cart table.summary_table tr.product input.bypv_product_remove,
+#bypv_cart table.summary_table tr.coupon_code input.bypv_coupon_code_remove_button,
+#bypv_cart div#bypv_cart_shipping_address_select input.bypv_remove_address_button
+{
+	background: url('../../../components/com_virtuemart/assets/images/vm2-sprite.png') no-repeat;
+}
+
+#bypv_cart table {
+	border-collapse: separate;
+	border-spacing: 0 0.5em;
+}
+
+#bypv_cart table tr,
+#bypv_cart table td
+{
+	border: none;
+	vertical-align: middle;
+}
+
+/*** Coupon Code ***/
+
+/*** Product List ***/
+
+#bypv_cart table.summary_table {
+	border-collapse: separate;
+	border-spacing: 0;
+	border: 1px solid #ddd;
+}
+
+#bypv_cart table.summary_table tr.coupon_code input[type=text] {
+	height: 22px;
+	line-height: 14px;
+	font-size: 11px;
+}
+
+#bypv_cart table.summary_table tr.coupon_code input[type=button] {
+	padding: 2px 12px;
+	height: 22px;
+}
+
+/*** Product List - COLS ***/
+
+#bypv_cart table.summary_table thead tr th,
+#bypv_cart table.summary_table tr td
+{
+	color: #333;
+}
+
+#bypv_cart table.summary_table thead tr th {
+	background-color: #eee;
+	border-bottom: 2px solid #ddd;
+	padding: 0.5em 0.2em;
+}
+
+#bypv_cart table.summary_table tr td {
+	padding: 0.2em;
+}
+
+#bypv_cart table.summary_table tr td span.original
+{
+	text-decoration: line-through;
+}
+
+#bypv_cart table.summary_table tfoot tr.subtotal td,
+#bypv_cart table.summary_table tfoot tr.total td,
+#bypv_cart table.summary_table tfoot tr.total_currency td
+{
+	padding: 0.5em 0.2em;
+	background-color: #f5f5f5;
+	font-weight: bold;
+}
+
+#bypv_cart table.summary_table tr td.name div.image img {
+	max-height: 5em;
+}
+
+#bypv_cart table.summary_table tr td.name span.product_name {
+	font-size: 1.1em;
+	font-weight: bold;
+}
+
+#bypv_cart table.summary_table tfoot tr td.label label {
+	font-weight: bold;
+}
+
+/*** Quantity Controls ***/
+
+#bypv_cart table.summary_table tr.product span.bypv_quantity_controls input {
+	width: 15px;
+	height: 14px;
+	background: url('../../../components/com_virtuemart/assets/images/vmgeneral/quantity-controls.png') no-repeat top left;
+}
+
+#bypv_cart table.summary_table input.bypv_quantity {
+	font-weight: bold;
+}
+
+#bypv_cart table.summary_table tr.product span.bypv_quantity_controls input.bypv_quantity_minus {
+	background-position: -15px 0;
+}
+
+#bypv_cart table.summary_table tr.product input.bypv_product_update {
+	background-position: 0 0;
+}
+
+#bypv_cart table.summary_table tr.product input.bypv_product_remove,
+#bypv_cart table.summary_table tr.coupon_code input.bypv_coupon_code_remove_button,
+#bypv_cart div#bypv_cart_shipping_address_select input.bypv_remove_address_button
+{
+	background-position: 0 -212px;
+}
+
+/*** Login / Logout ***/
+
+#bypv_cart div#bypv_cart_login.logout p
+{
+	line-height: 26px;
+}
+
+/*** Address ***/
+
+#bypv_cart div.address_block > .cart_block_title {
+	min-height: 24px;
+	padding: 0 0 0 30px;
+}
+
+#bypv_cart div#bypv_cart_billing_address > .cart_block_title {
+	background-position: 0 -138px;
+}
+
+#bypv_cart div#bypv_cart_shipping_address > .cart_block_title {
+	background-position: 0 -284px;
+}
+
+#bypv_cart div.address_block table {
+	border-collapse: separate;
+	border-spacing: 0 0.5em;
+}
+
+/*** Customer Comment ****/
+
+div#cart_comment textarea {
+	padding: 4px;
+	background-color: #f8f8f8;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	color: #777;
+}
+
+div#cart_comment textarea:hover {
+	background-color: #eee;
+	color: #000;
+}
+
+/*** TOS ****/
+
+div#cart_tos label {
+	font-size: 1.2em;
+}

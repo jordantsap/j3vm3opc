@@ -1,0 +1,89 @@
+/**
+ * Plugin: One Page Checkout for VirtueMart byPV
+ * Copyright (C) 2014 byPV.org <info@bypv.org>
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+/*** COMMON ***/
+
+div.bypv_empty_cover {
+	display: none;
+}
+
+/*** LOADER ***/
+
+div#bypv_loader {
+	display: none;
+}
+
+div.bypv_loader {
+	position: absolute;
+	z-index: 1000;
+	background: none !important;
+	border: none !important;
+}
+
+div.bypv_loader > div.bypv_background, div.bypv_loader > div.bypv_image {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+div.bypv_loader > div.bypv_background {
+	background-color: white !important;
+	opacity: 0.5 !important;
+
+	background: white url('../images/loader.gif') center center no-repeat !important;
+}
+
+/* If we don't want transparent loading image we use this selector */
+div.bypv_loader > div.bypv_image {
+}
+
+/*** FIELDS VALIDATION ***/
+
+tr.bypv_required > td.label > label:after
+{
+	content: "*";
+}
+
+tr.bypv_required > td.label > label,
+tr.bypv_required > td.label:after
+{
+	color: inherit;
+	transition:
+		opacity linear 0.5s,
+		color linear 0.5s
+	;
+}
+
+tr.bypv_required > td.label:after
+{
+	opacity: 0;
+	content: ">>";
+	float: right;
+	margin: 0 5px 0 0;
+}
+
+tr.bypv_required.bypv_invalid > td.label > label,
+tr.bypv_required.bypv_invalid > td.label:after
+{
+	color: red;
+}
+
+tr.bypv_required.bypv_invalid > td.label:after
+{
+	opacity: 1;
+}
